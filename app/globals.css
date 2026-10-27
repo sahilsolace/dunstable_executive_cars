@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  DEC brand tokens.
+  Primary sampled from the Dunstable Executive Cars logo (https://dunstablexecutivecars.co.uk/wp-content/uploads/2026/03/Dunstable-Executive-Cars-Logo.png)
+  Dominant non-black pixel cluster: #b01020 (deep crimson). Used as the single brand accent.
+  Accent is a darker shade of the same crimson for hover/pressed states.
+*/
+
+@layer base {
+  :root {
+    /* DEC brand */
+    --brand: 354 76% 40%;          /* #b01020 - logo red */
+    --brand-fg: 0 0% 100%;
+    --brand-strong: 354 80% 32%;   /* pressed */
+    --brand-soft: 354 60% 96%;     /* tint surface */
+
+    /* surfaces (light) */
+    --background: 0 0% 99%;
+    --foreground: 220 14% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 14% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 14% 12%;
+    --primary: 354 76% 40%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 14% 18%;
+    --muted: 220 12% 95%;
+    --muted-foreground: 220 10% 42%;
+    --accent: 220 14% 95%;
+    --accent-foreground: 220 14% 14%;
+    --destructive: 0 72% 46%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 12% 89%;
+    --input: 220 12% 88%;
+    --ring: 354 76% 40%;
+
+    /* status (semantic, consistent everywhere) */
+    --ok: 142 56% 38%;             /* Ready - green */
+    --ok-soft: 142 50% 95%;
+    --ok-fg: 142 60% 26%;
+    --warn: 38 92% 45%;            /* Due soon - amber */
+    --warn-soft: 38 90% 95%;
+    --warn-fg: 32 80% 32%;
+    --bad: 0 72% 46%;              /* Blocked - red */
+    --bad-soft: 0 70% 95%;
+    --bad-fg: 0 70% 34%;
+    --pending: 210 40% 55%;        /* Verification pending - grey-blue */
+    --pending-soft: 210 30% 95%;
+    --pending-fg: 210 40% 38%;
+
+    /* chart */
+    --chart-1: 354 76% 40%;
+    --chart-2: 142 56% 38%;
+    --chart-3: 38 92% 45%;
+    --chart-4: 210 40% 55%;
+    --chart-5: 280 40% 55%;
+
+    --radius: 0.375rem;
+  }
+
+  .dark {
+    --brand: 354 70% 52%;
+    --brand-fg: 0 0% 100%;
+    --brand-strong: 354 74% 44%;
+    --brand-soft: 354 40% 16%;
+
+    --background: 220 18% 9%;
+    --foreground: 220 10% 92%;
+    --card: 220 16% 11%;
+    --card-foreground: 220 10% 92%;
+    --popover: 220 16% 12%;
+    --popover-foreground: 220 10% 92%;
+    --primary: 354 70% 52%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 12% 16%;
+    --secondary-foreground: 220 10% 88%;
+    --muted: 220 12% 15%;
+    --muted-foreground: 220 8% 58%;
+    --accent: 220 12% 18%;
+    --accent-foreground: 220 10% 90%;
+    --destructive: 0 64% 52%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 12% 20%;
+    --input: 220 12% 22%;
+    --ring: 354 70% 52%;
+
+    --ok: 142 50% 48%;
+    --ok-soft: 142 30% 16%;
+    --ok-fg: 142 45% 60%;
+    --warn: 38 80% 52%;
+    --warn-soft: 38 40% 16%;
+    --warn-fg: 38 70% 62%;
+    --bad: 0 60% 54%;
+    --bad-soft: 0 30% 16%;
+    --bad-fg: 0 60% 64%;
+    --pending: 210 36% 62%;
+    --pending-soft: 210 24% 16%;
+    --pending-fg: 210 36% 70%;
+
+    --chart-1: 354 70% 52%;
+    --chart-2: 142 50% 48%;
+    --chart-3: 38 80% 52%;
+    --chart-4: 210 36% 62%;
+    --chart-5: 280 40% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "tnum" 1, "cv01" 1;
+  }
+  /* tabular numerals for dates, mileage, money */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* compact, dense operations-tool scrollbars */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: hsl(var(--muted-foreground) / 0.35); border-radius: 8px; border: 2px solid transparent; background-clip: content-box; }
+::-webkit-scrollbar-thumb:hover { background: hsl(var(--muted-foreground) / 0.55); background-clip: content-box; }
+::-webkit-scrollbar-track { background: transparent; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
